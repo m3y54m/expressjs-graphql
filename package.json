@@ -1,0 +1,22 @@
+{
+  "name": "expressjs-web-app",
+  "version": "1.0.0",
+  "description": "A getting started project for web application development with ExpressJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m3y54m/expressjs-web-app.git"
+  },
+  "author": "Meysam Parvizi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m3y54m/expressjs-web-app/issues"
+  },
+  "homepage": "https://github.com/m3y54m/expressjs-web-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
