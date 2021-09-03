@@ -61,3 +61,17 @@ Get list of all authors:
   }
 }
 ```
+
+Get list of all authors with their books:
+
+```console
+{
+  authors {
+    id
+    name
+    books {
+      name
+    }
+  }
+}
+```
