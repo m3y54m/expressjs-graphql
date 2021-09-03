@@ -4,7 +4,7 @@
   "description": "A getting started project for web application development with ExpressJS",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "npx nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

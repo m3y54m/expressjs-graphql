@@ -4,12 +4,15 @@ This project was made based on [Express's getting started guide](https://express
 
 ## A Hello World GraphQL API
 
-Install the following NPM packages:
+Install the following NodeJS packages:
 
 ```console
-npm install express --save
-npm install express-graphql --save
-npm install graphql --save
+yarn add express
+yarn add express-graphql
+yarn add graphql
+
+# automatic restart tool for development time
+yarn add nodemon --dev
 ```
 
 ## Run The App
