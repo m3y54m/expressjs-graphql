@@ -102,5 +102,17 @@ Get a single author by id:
     }
   }
 }
-  
+```
+
+## GraphQL Sample Mutations
+
+Add a new book:
+
+```console
+mutation {
+  addBook(name: "New Book Title", authorId: 1) {
+    id
+    name
+  }
+}
 ```
