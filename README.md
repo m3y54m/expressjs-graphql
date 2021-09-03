@@ -2,6 +2,8 @@
 
 This project was made based on [Express's getting started guide](https://expressjs.com/en/starter/installing.html)
 
+The "Books and Authors API" was added based on the ["Learn GraphQL In 40 Minutes"](https://www.youtube.com/watch?v=ZQL7tL2S0oQ) at Youtube.
+
 ## A Hello World GraphQL API
 
 Install the following NodeJS packages:
