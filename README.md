@@ -89,3 +89,18 @@ Get a single book by id:
   }
 }
 ```
+
+Get a single author by id:
+
+```console
+{
+	author(id: 1){
+    id
+    name
+    books{
+      name
+    }
+  }
+}
+  
+```
