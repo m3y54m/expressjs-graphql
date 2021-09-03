@@ -27,6 +27,16 @@ const books = [
   { id: 8, name: "Beyond the Shadows", authorId: 3 },
 ];
 
+// The author type nested in the books query
+const AuthorType = new GraphQLObjectType({
+  name: "Author",
+  description: "This represents an author of a book",
+  fields: () => ({
+    id: { type: GraphQLNonNull(GraphQLInt) },
+    name: { type: GraphQLNonNull(GraphQLString) },
+  }),
+});
+
 // The book type nested in the root query
 const BookType = new GraphQLObjectType({
   name: "Book",
@@ -35,6 +45,12 @@ const BookType = new GraphQLObjectType({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLNonNull(GraphQLString) },
     authorId: { type: GraphQLNonNull(GraphQLInt) },
+    author: {
+      type: AuthorType,
+      resolve: (book) => {
+        return authors.find((author) => author.id === book.authorId);
+      },
+    },
   }),
 });
 
@@ -57,7 +73,6 @@ const schema = new GraphQLSchema({
 });
 
 const app = express();
-
 // To avoid deployment problems in evironments like Heroku,
 // the port is first set by process.env.PORT environment variable
 const port = process.env.PORT || 3000;

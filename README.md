@@ -36,3 +36,16 @@ Get list of all books:
   }
 }
 ```
+Get list of all books with author names:
+
+```console
+{
+  books {
+    id
+    name
+    author {
+      name
+    }
+  }
+}
+```
