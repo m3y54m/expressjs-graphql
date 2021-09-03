@@ -75,3 +75,17 @@ Get list of all authors with their books:
   }
 }
 ```
+
+Get a single book by id:
+
+```console
+{
+	book(id: 1){
+    id
+    name
+    author{
+      name
+    }
+  }
+}
+```
