@@ -36,6 +36,7 @@ Get list of all books:
   }
 }
 ```
+
 Get list of all books with author names:
 
 ```console
@@ -46,6 +47,17 @@ Get list of all books with author names:
     author {
       name
     }
+  }
+}
+```
+
+Get list of all authors:
+
+```console
+{
+  authors {
+    id
+    name
   }
 }
 ```
