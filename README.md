@@ -116,3 +116,14 @@ mutation {
   }
 }
 ```
+
+Add a new author:
+
+```console
+mutation {
+  addAuthor(name: "New Author Name") {
+    id
+    name
+  }
+}
+```
