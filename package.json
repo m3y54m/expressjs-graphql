@@ -4,6 +4,7 @@
   "description": "A getting started project for web application development with ExpressJS",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "start-dev": "npx nodemon app.js"
   },
   "repository": {
