@@ -1,6 +1,4 @@
 const express = require('express')
-const app = express()
-const port = 3000
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 
@@ -17,6 +15,9 @@ var root = {
     return 'Hello world!';
   },
 };
+
+const app = express()
+const port = 3000
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,

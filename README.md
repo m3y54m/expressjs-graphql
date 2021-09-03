@@ -7,6 +7,7 @@ This project was made based on [Express's getting started guide](https://express
 Install the following NPM packages:
 
 ```console
+npm install express --save
 npm install express-graphql --save
 npm install graphql --save
 ```
