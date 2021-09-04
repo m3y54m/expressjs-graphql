@@ -2,7 +2,9 @@
 
 This project was made based on [Express's getting started guide](https://expressjs.com/en/starter/installing.html)
 
-The "Books and Authors API" was added based on the ["Learn GraphQL In 40 Minutes"](https://www.youtube.com/watch?v=ZQL7tL2S0oQ) at Youtube.
+The "Books and Authors API" was added based on ["Learn GraphQL In 40 Minutes"](https://www.youtube.com/watch?v=ZQL7tL2S0oQ) at Youtube.
+
+Added MongoDB database integration using [mangoose](https://mongoosejs.com/docs/index.html) based on ["Developing A GraphQL API With Node.js And MongoDB"](https://www.youtube.com/watch?v=0bYf1wcOK9o) at Youtube
 
 ## Project Initialization
 
