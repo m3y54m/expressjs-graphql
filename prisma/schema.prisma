@@ -13,12 +13,14 @@ generator client {
 model Author {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(255)
-  Book Book[]
+  
+  books Book[]
 }
 
 model Book {
   id       Int    @id @default(autoincrement())
   name     String @db.VarChar(255)
   authorId Int
-  Author   Author @relation(fields: [authorId], references: [id])
+
+  author   Author @relation(fields: [authorId], references: [id])
 }
