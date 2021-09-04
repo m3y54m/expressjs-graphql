@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/m3y54m/expressjs-graphql#readme",
   "dependencies": {
+    "@prisma/client": "2.30.3",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "prisma": "2.30.3"
   },
   "engines": {
     "node": "14.x"

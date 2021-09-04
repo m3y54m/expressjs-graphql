@@ -12,10 +12,28 @@ Install the following NodeJS packages:
 yarn add express
 yarn add express-graphql
 yarn add graphql
+```
 
-# automatic restart tool for development time
+Automatic restart tool for development time:
+
+```console
 yarn add nodemon --dev
 ```
+
+Prisma ORM:
+
+```console
+yarn add prisma --dev
+
+npx prisma init
+```
+
+### Migrate Database
+
+```console
+npx prisma migrate dev --name init
+```
+
 
 ## Run The App
 
