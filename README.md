@@ -4,7 +4,7 @@ This project was made based on [Express's getting started guide](https://express
 
 The "Books and Authors API" was added based on ["Learn GraphQL In 40 Minutes"](https://www.youtube.com/watch?v=ZQL7tL2S0oQ) at Youtube.
 
-Added MongoDB database integration using [mangoose](https://mongoosejs.com/docs/index.html) based on ["Developing A GraphQL API With Node.js And MongoDB"](https://www.youtube.com/watch?v=0bYf1wcOK9o) at Youtube
+Added MongoDB database integration using [mongoose](https://mongoosejs.com/docs/index.html) based on ["Developing A GraphQL API With Node.js And MongoDB"](https://www.youtube.com/watch?v=0bYf1wcOK9o) at Youtube and ["One-To-Many Relationships with MongoDB and Mongoose in Node/Express"](https://medium.com/@brandon.lau86/one-to-many-relationships-with-mongodb-and-mongoose-in-node-express-d5c9d23d93c2)
 
 ## Project Initialization
 
@@ -14,11 +14,29 @@ Install the following NodeJS packages:
 yarn add express
 yarn add express-graphql
 yarn add graphql
+```
 
-# automatic restart tool for development time
+Automatic restart tool for development time:
+
+```console
 yarn add nodemon --dev
 ```
 
+Mongoose for MongoDB:
+
+```console
+yarn add mongoose
+```
+
+Using dotenv package to create environment variables:
+
+```console
+yarn add dotenv
+```
+
+## Initialize Database Contents 
+
+Initialize the MongoDB database by two collections called `authors` and `books` using json files in `init_db` directory.
 ## Run The App
 
 Run the app with the following command:

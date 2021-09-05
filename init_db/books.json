@@ -1,0 +1,74 @@
+[
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c1"
+        },
+        "name": "Harry Potter and the Chamber of Secrets",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c51"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c2"
+        },
+        "name": "Harry Potter and the Prisoner of Azkaban",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c51"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c3"
+        },
+        "name": "Harry Potter and the Goblet of Fire",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c51"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c4"
+        },
+        "name": "The Fellowship of the Ring",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c52"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c5"
+        },
+        "name": "The Two Towers",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c52"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c6"
+        },
+        "name": "The Return of the King",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c52"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c7"
+        },
+        "name": "The Way of Shadows",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c53"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61342bbbb637acd4b12a05c8"
+        },
+        "name": "Beyond the Shadows",
+        "authorId": {
+            "$oid": "61342971122e1662e9851c53"
+        }
+    }
+]

@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 
@@ -6,38 +8,39 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
-  GraphQLInt,
   GraphQLNonNull,
+  GraphQLID,
 } = require("graphql");
 
-const authors = [
-  { id: 1, name: "J. K. Rowling" },
-  { id: 2, name: "J. R. R. Tolkien" },
-  { id: 3, name: "Brent Weeks" },
-];
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const books = [
-  { id: 1, name: "Harry Potter and the Chamber of Secrets", authorId: 1 },
-  { id: 2, name: "Harry Potter and the Prisoner of Azkaban", authorId: 1 },
-  { id: 3, name: "Harry Potter and the Goblet of Fire", authorId: 1 },
-  { id: 4, name: "The Fellowship of the Ring", authorId: 2 },
-  { id: 5, name: "The Two Towers", authorId: 2 },
-  { id: 6, name: "The Return of the King", authorId: 2 },
-  { id: 7, name: "The Way of Shadows", authorId: 3 },
-  { id: 8, name: "Beyond the Shadows", authorId: 3 },
-];
+// enter DATABASE_URL="your mongodb database url" in '.env' file
+mongoose.connect(process.env.DATABASE_URL);
+
+const AuthorModel = mongoose.model("Author", {
+  name: String,
+});
+
+const BookModel = mongoose.model("Book", {
+  name: String,
+  authorId: {
+    type: Schema.Types.ObjectId,
+    ref: "Author",
+  },
+});
 
 // The author type nested in the books query
 const AuthorType = new GraphQLObjectType({
   name: "Author",
   description: "This represents an author of a book",
   fields: () => ({
-    id: { type: GraphQLNonNull(GraphQLInt) },
+    id: { type: GraphQLNonNull(GraphQLID) },
     name: { type: GraphQLNonNull(GraphQLString) },
     books: {
       type: new GraphQLList(BookType),
       resolve: (author) => {
-        return books.filter((book) => book.authorId === author.id);
+        return BookModel.find({authorId: author.id}).exec();
       },
     },
   }),
@@ -48,13 +51,13 @@ const BookType = new GraphQLObjectType({
   name: "Book",
   description: "This represents a book written by an author",
   fields: () => ({
-    id: { type: GraphQLNonNull(GraphQLInt) },
+    id: { type: GraphQLNonNull(GraphQLID) },
     name: { type: GraphQLNonNull(GraphQLString) },
-    authorId: { type: GraphQLNonNull(GraphQLInt) },
+    authorId: { type: GraphQLNonNull(GraphQLID) },
     author: {
       type: AuthorType,
       resolve: (book) => {
-        return authors.find((author) => author.id === book.authorId);
+        return AuthorModel.findById(book.authorId).exec();
       },
     },
   }),
@@ -70,31 +73,31 @@ const RootQueryType = new GraphQLObjectType({
       type: BookType,
       description: "Get a single book by id",
       args: {
-        id: { type: GraphQLInt },
+        id: { type: GraphQLID },
       },
-      resolve: (parent, args) => books.find((book) => book.id === args.id),
+      resolve: (parent, args) => BookModel.findById(args.id).exec(),
     },
     // query list of all books
     books: {
       type: new GraphQLList(BookType),
       description: "List of all books",
-      resolve: () => books,
+      resolve: () => BookModel.find().exec(),
     },
     // query a single author
     author: {
       type: AuthorType,
       description: "Get a single author by id",
       args: {
-        id: { type: GraphQLInt },
+        id: { type: GraphQLID },
       },
-      resolve: (parent, args) =>
-        authors.find((author) => author.id === args.id),
+      resolve: (parent, args) => AuthorModel.findById(args.id).exec(),
     },
     // query list of all authors
     authors: {
       type: new GraphQLList(AuthorType),
       description: "List of all authors",
-      resolve: () => authors,
+      // return all items in AuthorModel
+      resolve: () => AuthorModel.find().exec(),
     },
   }),
 });
@@ -110,16 +113,11 @@ const RootMutationType = new GraphQLObjectType({
       description: "Add a book",
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
-        authorId: { type: GraphQLNonNull(GraphQLInt) },
+        authorId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve: (parent, args) => {
-        const book = {
-          id: books.length + 1,
-          name: args.name,
-          authorId: args.authorId,
-        };
-        books.push(book);
-        return book;
+        var book = new BookModel(args);
+        return book.save();
       },
     },
     // mutation for adding a new author
@@ -130,12 +128,8 @@ const RootMutationType = new GraphQLObjectType({
         name: { type: GraphQLNonNull(GraphQLString) },
       },
       resolve: (parent, args) => {
-        const author = {
-          id: authors.length + 1,
-          name: args.name,
-        };
-        authors.push(author);
-        return author;
+        var author = new AuthorModel(args);
+        return author.save();
       },
     },
   }),
@@ -148,8 +142,7 @@ const schema = new GraphQLSchema({
 });
 
 const app = express();
-// To avoid deployment problems in evironments like Heroku,
-// the port is first set by process.env.PORT environment variable
+// Use port 3000 unless there exists a preconfigured port
 const port = process.env.PORT || 3000;
 
 app.use(
